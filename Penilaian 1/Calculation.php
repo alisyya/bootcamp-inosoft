@@ -2,6 +2,8 @@
 
 namespace Calculation;
 
+use Exception;
+
 class Calculation
 {
     public $daya;
@@ -24,21 +26,14 @@ class Calculation
 
         $this->daya -= $this->biaya;
 
-
-        switch ($bil) {
-            case "1":
-                return $this->Limit($bil1 + $bil2);
-            case "2":
-                return $this->Limit($bil1 - $bil2);
-            case "3":
-                return $this->Limit($bil1 * $bil2);
-            case "4":
-                return $this->Limit($bil1 / $bil2);
-            case "5":
-                return $this->Limit($bil1 ** $bil2);
-            default:
-                throw new Exception("Tidak Menemukan opreasi");
-        }
+        match($bil) {
+            1 => $this->Limit($bil1 + $bil2),
+            2 => $this->Limit($bil1 - $bil2),
+            3 => $this->Limit($bil1 * $bil2),
+            4 => $this->Limit($bil1 / $bil2),
+            5 => $this->Limit($bil1 ** $bil2),
+            default => throw new Exception("TIdak Menemukan Operasi"),
+        };
 
     }
 
