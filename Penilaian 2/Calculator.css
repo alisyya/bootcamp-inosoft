@@ -1,30 +1,35 @@
-
-.calc-title, .calc-sub-title {
-  font-family: 'Ubuntu Mono', sans-serif;
-  font-size: 20pt;
-  text-align: center;
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    font-family: Orbitron, Sans-serif;
+    margin-bottom: 60px;
+}
+#display{
+    height: 40px;
+    border-radius: 5px;
+    text-align: right;
 }
 
-.calc-sub-title {
-  font-size: 8pt;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-#outer-container {
-  background-color: rgba(115, 220, 176, 0.33); 
-  max-width: 240px;
-  padding-bottom: 20px;
+.clickable {
+    pointer-events : auto;
+    cursor: pointer;
+}
+.unclickable {
+    pointer-events: none;
 }
 
-#inner-container {
-  max-width:200px;
-}
-
-#inputOutput {
-  text-align: right;
-  margin-top: 10px;
-}
-
-.btn:focus,.btn:active:focus,.btn.active:focus,
-.btn.focus,.btn:active.focus,.btn.active.focus {
-    outline: none;
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 15px;
+    height: 60px;
 }

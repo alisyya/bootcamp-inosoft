@@ -1,216 +1,167 @@
-/*
+const display = document.getElementById('display');
+const dot = document.getElementById('dot');
+let lastElement = 'operator';
 
-Calculator Without Using Eval
-Object Oriented JavaScript
-Bootstrap Framework Design
-
-author: Shawn Moore
-
-*/
-
-function Calculator() {
-  //private
-  var result = 0;
-  var previous = 0;
-  var reset = false;
-
-  //public
-  this.opVals = ["+","-","*","/"];
-
-  this.isNumeric = function(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-  }
-
-  this.convertExpression = function(s) {
-    if (s.length === 0) return 0;
-
-    var a = [];
-    a = s.split(" ");
-    for(var i = 0; i < a.length; i++) {
-      if (this.isNumeric(a[i])) {
-        a[i] = Number(a[i]);
-      }
+function addNumber(id) {
+    let number = document.getElementById(id).textContent;
+    let val = display.value;
+    if (val[0] === '0'&& val[1] !== '.') {
+        val = val.slice(0, -1);
+        lastElement = 'operator';
     }
-
-    return a;
-  }
-
-  this.multiplyOrDivide = function(a) {
-    var total = 0;
-    if (a.indexOf('*') !== -1 || a.indexOf('/') !== -1) {
-      for (var i = 0; i < a.length; i++) {
-        try {
-          switch(a[i]) {
-            case '*':
-              total = a[i-1] * a[i+1];
-              a.splice(i-1,3,total);
-              i--;
-              break;
-            case '/':
-              if (a[i+1] === 0) {
-                throw new Error("dividing by zero");
-              } else {
-                total = a[i-1] / a[i+1];
-              }
-              a.splice(i-1,3,total);
-              i--;
-              break;
-            default:
-              break;
-          }
-        } catch(e) {
-          console.log(e.name + ': ' + e.message);
-        }
-      }
+    if (val.length < 17) {
+        val += number;
+        lastElement = 'number';
     }
-    return a;
-  }
-
-  this.addOrSubtract = function(a) {
-    var total = 0;
-    if (a.indexOf('+') !== -1 || a.indexOf('-') !== -1) {
-      for (var i = 0; i < a.length; i++) {
-        try {
-          switch(a[i]) {
-            case '+':
-              total = a[i-1] + a[i+1];
-              a.splice(i-1,3,total);
-              i--;
-              break;
-            case '-':
-              total = a[i-1] - a[i+1];
-              a.splice(i-1,3,total);
-              i--;
-              break;
-            default:
-              break;
-          }
-        } catch (e) {
-          console.log(e.name + ': ' + e.message);
-        }
-      }
-    }
-    return a;
-  }
-
-  this.equals = function(s) {
-    if (s.length === 0) return "";
-
-    var a = this.convertExpression(s);
-    previous = result;
-    if (a.length === 0)
-      result = 0;
-    
-    //order of operations
-    a = this.multiplyOrDivide(a);
-    a = this.addOrSubtract(a);
-
-    try {
-      if ( a.length !== 1 || !Number(a[0]) ) {
-        throw new Error("Order of operations incomplete");
-      }
-      result = a[0];
-    } catch(e) {
-      console.log(e.name + ': ' + e.message);
-      result = "error";
-    }
-        
-    return result;
-  }
-
-  this.setReset = function(val) {
-    reset = val;
-  }
-
-  this.getReset = function() {
-    return reset;
-  }
-
-  this.clearAll = function() {
-    result = "";
-    previous = "";
-    return result;
-  }
-
-  //go back to last answer
-  this.clearLast = function() {
-    result = previous;
-    previous = "";
-    return result;
-  }
-
+    display.value = val;
+    console.log(`${lastElement} ${display.value}`);
 }
 
-var init = function() {
-  var myCalc = new Calculator();
-  var inputOutput = document.getElementById("inputOutput");
-  
-  //event handler
-  var calculate = function(e) {
-    var element = e.target || e.srcElement;
-    var op = element.innerHTML;
-    var opVals = myCalc.opVals;
+function addOperator(id) {
+    let operator = document.getElementById(id).textContent;
+    let val = display.value;
+    if (1 <= val.length && val.length < 16) {
+        if (lastElement === 'number') {
+            val += operator;
+            lastElement = 'operator';
+        }
+        else if (lastElement === 'operator') {
+            val = val.slice(0, -1) + operator;
+        }
+    }
+    display.value = val;
+    console.log(`${lastElement} ${display.value}`);
+}
 
+function setBackspace() {
+    let val = display.value;
+    val = val.slice(0, -1);
+    display.value = val;
+}
+
+function setDeleteAll() {
+    display.value = '';
+    lastElement = 'operator';
+
+    if (dot.classList.contains('unclickable')) {
+        dot.classList.remove('unclickable').add('clickable')
+    } else {
+        return;
+    }
+}
+
+function switchSign() {
+    let val = display.value;
+    val = val[0] === '-' ? val.slice(1) : '-' + val.slice(0);
+    display.value = val;
+}
+
+function setSquare() {
+    let val = display.value;
+    if (val.length <= 13) {
+        val = Math.pow(val, 2).toFixed(4).replace(/\.?0*$/g,'');
+    } else {
+        val = expo(Math.pow(val, 2), 6);
+
+        if(val === 'Infinity') {
+            val = test(val);
+        }
+    }
+    display.value = val;
+}
+
+function setTotal() {
+    let val = display.value;
+    if(lastElement === 'operator') {
+        return syntaxErr(val);
+    }
+    if (val.length <= 17) {
+        val = eval(val).toFixed(4).replace(/\.?0*$/g,'');
+    } else {
+        val = expo(eval(val), 6);
+    }
+    val = test(val);
+    display.value = val;
+}
+
+const expo = (x, f) => Number.parseFloat(x).toExponential(f);
+function syntaxErr() {
     try {
-      if (myCalc.isNumeric(op)) {
+        throw new SyntaxError('Error');
+    } catch (e) {
+        alert(`${e.name}: Unexpected end of input`);
+        display.value = e.message;
+        return display.value;
+    }
+}
+function test(number) {
+    number = parseInt(number);
 
-        if (myCalc.getReset()) {
-          inputOutput.value = op;
+    if (Number.isFinite(number)) {
+        console.log('Number is NOT Infinity.');
+        return number;
+    }
+    try {
+        throw new Error('Error');
+    } catch (e) {
+        console.log(`${e.name}: ${e.message}`);
+
+        if (typeof number === 'undefined') {
+            alert('Value is undefined!');
+            return e.message;
+        }
+        alert('Value is Infinity!');
+        return e.message;
+    }
+}
+
+display.addEventListener('keydown', e => e.preventDefault());
+
+document.addEventListener('click', e => {
+
+    const clicked = e.target;
+
+    if (display.value === 'Error') {
+        if (clicked.id === 'ac') {
+            setDeleteAll();
         } else {
-          inputOutput.value += op;
+            return;
         }
-        myCalc.setReset(false);
-
-      } else if (op === ".") {
-
-        if (myCalc.isNumeric(inputOutput.value.substr(-1))) {
-          inputOutput.value += op;
-          myCalc.setReset(false);
-        }
-
-      } else if (opVals.indexOf(op) !== -1) {
-
-        if (opVals.indexOf(inputOutput.value.substr(-2,1)) === -1) {
-          inputOutput.value += " " + op + " ";
-          myCalc.setReset(false);
-        }
-          
-      } else if (op === "=" && !myCalc.getReset()) {
-
-        inputOutput.value = myCalc.equals(inputOutput.value);
-        myCalc.setReset(true);
-
-      } else if (op === "CE") {
-
-        inputOutput.value = myCalc.clearLast();
-        myCalc.setReset(true);
-
-      } else if (op === "AC") {
-
-        myCalc.clearAll();
-        inputOutput.value = "";
-        myCalc.setReset(true);
-
-      } else {
-
-        throw new Error("unknown entry");
-
-      }
-    } catch(e) {
-      console.log(e.name + ': ' + e.message);
-      inputOutput.value = "error";
     }
-  };
 
-  //add events
-  (function(){
-    var calc = document.getElementById("calculator");
-    var buttons = calc.getElementsByTagName("button");
-    for (var i = 0; i < buttons.length; i++) { 
-      buttons[i].addEventListener("click", calculate);
+    if (clicked.classList[0] === 'number') {
+        addNumber(clicked.id);
     }
-  })();
 
-};
+    if (clicked.classList[0] === 'operator') {
+        if (clicked === dot) {
+            dot.classList.remove('clickable');
+            dot.classList.add('unclickable');
+        }
+        else if (clicked !== dot) {
+            dot.classList.remove('unclickable');
+            dot.classList.add('clickable');
+        }
+        addOperator(clicked.id);
+    }
 
-window.onload = init;
+    if (clicked.id === 'backspace') {
+        setBackspace();
+    }
+
+    if (clicked.id === 'ac') {
+        setDeleteAll();
+    }
+
+    if (clicked.id === 'sign') {
+        switchSign();
+    }
+
+    if (clicked.id === 'square') {
+        setSquare();
+    }
+
+    if (clicked.id === 'equal') {
+        setTotal();
+    }
+});
