@@ -2,12 +2,8 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
 import {routes} from './routes';
-import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
-import store from './store'
+import store from './store/store'
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import '../css/app.css';
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -31,7 +27,7 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('header-component', require('./components/HeaderComponent.vue').default);
+Vue.component('navbar', require('./components/Navbar.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -40,14 +36,15 @@ Vue.component('header-component', require('./components/HeaderComponent.vue').de
  */
 
  Vue.use(VueRouter);
- Vue.use(BootstrapVue)
- Vue.use(BootstrapVueIcons)
  const router = new VueRouter({
-     mode: 'history',
-     routes
- });
- new Vue({
-     el: '#app',
-     router,
-     store
- });
+    mode: 'history',
+    routes
+});
+const app = new Vue({
+    el: '#app',
+    store,
+    router,
+    created() {
+        this.$store.dispatch('getProductItems');
+      }
+});
