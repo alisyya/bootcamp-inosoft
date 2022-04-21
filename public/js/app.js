@@ -5460,6 +5460,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProductListItem",
   props: ["productItem"],
@@ -29329,36 +29354,73 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
-    _c("div", { staticClass: "card-body" }, [
-      _c("h5", { staticClass: "card-title" }, [
-        _vm._v(_vm._s(_vm.productItem.title)),
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "card-text" }, [
-        _vm._v(_vm._s(_vm.productItem.description)),
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "btn btn-light" }, [
-        _vm._v(_vm._s(_vm.productItem.stock)),
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "btn btn-light" }, [
-        _vm._v("Rp. " + _vm._s(_vm.productItem.price)),
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          on: {
-            click: function ($event) {
-              return _vm.addToCart()
+  return _c("div", { staticClass: "col" }, [
+    _c("div", { attrs: { id: "accordion" } }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header", attrs: { id: "headingOne" } }, [
+          _c("h5", { staticClass: "mb-0" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-link",
+                attrs: {
+                  "data-toggle": "collapse",
+                  "data-target": "#collapseOne",
+                  "aria-expanded": "true",
+                  "aria-controls": "collapseOne",
+                },
+              },
+              [
+                _vm._v(
+                  "\n            >" +
+                    _vm._s(_vm.productItem.title) +
+                    "\n          "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "collapse show",
+            attrs: {
+              id: "collapseOne",
+              "aria-labelledby": "headingOne",
+              "data-parent": "#accordion",
             },
           },
-        },
-        [_vm._v("Add to Cart")]
-      ),
+          [
+            _c("div", { staticClass: "card-body" }, [
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(_vm._s(_vm.productItem.description)),
+              ]),
+              _vm._v(" "),
+              _c("a", { staticClass: "btn btn-light" }, [
+                _vm._v(_vm._s(_vm.productItem.stock)),
+              ]),
+              _vm._v(" "),
+              _c("a", { staticClass: "btn btn-light" }, [
+                _vm._v("Rp. " + _vm._s(_vm.productItem.price)),
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: function ($event) {
+                      return _vm.addToCart()
+                    },
+                  },
+                },
+                [_vm._v("\n            Add to Cart\n          ")]
+              ),
+            ]),
+          ]
+        ),
+      ]),
     ]),
   ])
 }

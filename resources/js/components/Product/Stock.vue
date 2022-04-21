@@ -1,11 +1,36 @@
 <template>
-  <div class="card" style="width: 18rem">
-    <div class="card-body">
-      <h5 class="card-title">{{ productItem.title }}</h5>
-      <p class="card-text">{{ productItem.description }}</p>
-      <a class="btn btn-light">{{ productItem.stock }}</a>
-      <a class="btn btn-light">Rp. {{ productItem.price }}</a>
-      <button class="btn btn-primary" @click="addToCart()">Add to Cart</button>
+  <div class="col">
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button
+              class="btn btn-link"
+              data-toggle="collapse"
+              data-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              >{{ productItem.title }}
+            </button>
+          </h5>
+        </div>
+        <div
+          id="collapseOne"
+          class="collapse show"
+          aria-labelledby="headingOne"
+          data-parent="#accordion"
+        >
+          <div class="card-body">
+            <p class="card-text">{{ productItem.description }}</p>
+            <a class="btn btn-light">{{ productItem.stock }}</a>
+            <a class="btn btn-light">Rp. {{ productItem.price }}</a>
+            <button class="btn btn-primary" @click="addToCart()">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
