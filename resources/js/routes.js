@@ -1,8 +1,8 @@
-import Product from './components/ProductComponent.vue';
+import Stock from './components/StockComponent.vue';
 import Checkout from './components/CheckoutComponent.vue';
 
 export const routes = [
-    {path: '/product', component: Product, name: "Product"},
-    {path: '/', component: Product, name: "Home"},
+    {path: '/product', component: Stock, name: "Stock"},
+    {path: '/', component: Stock, name: "Home"},
     {path: '/checkout', component: Checkout, name: "Checkout"}
 ];
