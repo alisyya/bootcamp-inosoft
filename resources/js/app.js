@@ -7,7 +7,7 @@ import store from './store'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import '../css/main.css';
+import '../css/app.css';
 
 /**
  * First we will load all of this project's JavaScript dependencies which
