@@ -1,6 +1,5 @@
 <template>
   <div class="main">
-    <h1 class="display-4">Semua Produk</h1>
     <table class="table table-hover">
       <tbody>
         <ProductStock

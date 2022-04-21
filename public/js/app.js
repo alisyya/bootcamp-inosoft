@@ -5381,6 +5381,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(["cartTotal"]))
@@ -5409,7 +5415,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -10824,7 +10829,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.main[data-v-6dde423b]{\n    display: inline-block;\n    width: 50%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.main[data-v-6dde423b] {\n  display: inline-block;\n  width: 50%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29278,13 +29283,19 @@ var render = function () {
     [
       _c(
         "router-link",
-        { staticClass: "btn btn-primary-outline", attrs: { to: "/product" } },
+        {
+          staticClass: "d-flex justify-content-center btn btn-warning",
+          attrs: { to: "/product" },
+        },
         [_c("strong", [_vm._v("Product List")])]
       ),
       _vm._v(" "),
       _c(
         "router-link",
-        { staticClass: "btn btn-primary", attrs: { to: "/cart" } },
+        {
+          staticClass: "d-flex justify-content-center btn btn-secondary",
+          attrs: { to: "/cart" },
+        },
         [_c("strong", [_vm._v(" Check Out (" + _vm._s(_vm.cartTotal) + ")")])]
       ),
     ],
@@ -29315,8 +29326,6 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "main" }, [
-    _c("h1", { staticClass: "display-4" }, [_vm._v("Semua Produk")]),
-    _vm._v(" "),
     _c("table", { staticClass: "table table-hover" }, [
       _c(
         "tbody",
