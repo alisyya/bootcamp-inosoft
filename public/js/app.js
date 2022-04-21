@@ -5332,14 +5332,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "CartListItem",
-  props: ['cartItem'],
+  name: "ProductListItem",
+  props: ["productItem"],
   methods: {
-    deleteItem: function deleteItem() {
-      this.$store.dispatch('deleteItemFromCart', {
-        id: this.cartItem.id,
-        quantity: this.cartItem.quantity
+    addToCart: function addToCart() {
+      this.$store.dispatch("addProductToCart", {
+        id: this.productItem.id,
+        title: this.productItem.title,
+        price: this.productItem.price,
+        quantity: 1
       });
     }
   }
@@ -5421,15 +5424,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_name$components$comp = {
@@ -5464,13 +5458,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProductListItem",
   props: ["productItem"],
   methods: {
     addToCart: function addToCart() {
-      this.$store.dispatch('addProductToCart', {
+      this.$store.dispatch("addProductToCart", {
         id: this.productItem.id,
         title: this.productItem.title,
         price: this.productItem.price,
@@ -29217,7 +29212,7 @@ var render = function () {
       _c(
         "button",
         {
-          staticClass: "btn btn-primary",
+          staticClass: "btn btn-dark",
           on: {
             click: function ($event) {
               return _vm.deleteItem()
@@ -29298,8 +29293,6 @@ var render = function () {
     _c("h1", { staticClass: "display-4" }, [_vm._v("Semua Produk")]),
     _vm._v(" "),
     _c("table", { staticClass: "table table-hover" }, [
-      _vm._m(0),
-      _vm._v(" "),
       _c(
         "tbody",
         _vm._l(_vm.productItems, function (productItem) {
@@ -29313,26 +29306,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Description")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Stock")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -29355,18 +29329,24 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("tr", [
-    _c("th", { attrs: { scope: "row" } }, [
-      _vm._v(_vm._s(_vm.productItem.title)),
-    ]),
-    _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.productItem.description))]),
-    _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.productItem.stock))]),
-    _vm._v(" "),
-    _c("td", [_vm._v("Rp. " + _vm._s(_vm.productItem.price))]),
-    _vm._v(" "),
-    _c("td", [
+  return _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("h5", { staticClass: "card-title" }, [
+        _vm._v(_vm._s(_vm.productItem.title)),
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text" }, [
+        _vm._v(_vm._s(_vm.productItem.description)),
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-light" }, [
+        _vm._v(_vm._s(_vm.productItem.stock)),
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-light" }, [
+        _vm._v("Rp. " + _vm._s(_vm.productItem.price)),
+      ]),
+      _vm._v(" "),
       _c(
         "button",
         {
