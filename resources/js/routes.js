@@ -1,5 +1,5 @@
-import ProductList from './components/Product/Stock';
-import CartList from './components/Cart/Stock.vue';
+import ProductList from './components/Product/Item.vue';
+import CartList from './components/Cart/Item.vue';
 export const routes = [
     {
         path: '/product',

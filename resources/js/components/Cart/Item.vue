@@ -11,7 +11,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <Stock v-for="cartItem in cartItems" :key="cartItem.id" :cartItem="cartItem"></Stock>
+                    <CartListItem v-for="cartItem in cartItems" :key="cartItem.id" :cartItem="cartItem"></CartListItem>
                     <tr>
                        <td> <h3>Total :</h3></td>
                        <td></td>
@@ -26,11 +26,11 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import Stock from './Stock.vue'
+import CartListItem from './Stock.vue'
 export default {
   name: "CartList",
   components:{
-      Stock
+      CartListItem
   },
   computed: {
     ...mapGetters(["cartItems","TotalPrice"]),
@@ -43,4 +43,3 @@ export default {
 }
 </style>
 
-    

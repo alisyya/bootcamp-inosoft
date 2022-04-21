@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "CartStock",
+  name: "CartListItem",
   props: ['cartItem'],
   methods: {
       deleteItem(){
@@ -21,4 +21,3 @@ export default {
   },
 };
 </script>
-
