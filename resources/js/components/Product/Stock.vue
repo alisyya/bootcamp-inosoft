@@ -11,7 +11,7 @@
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              >{{ productItem.title }}
+              {{ productItem.title }}
             </button>
           </h5>
         </div>

@@ -5300,6 +5300,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5368,6 +5376,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -10805,7 +10815,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.main[data-v-53219c32]{\n    max-width: 80%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.main[data-v-53219c32] {\n  max-width: 80%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29181,7 +29191,7 @@ var render = function () {
         staticClass: "btn btn-primary",
         attrs: { onClick: "alert('Checkout Berhasil')" },
       },
-      [_vm._v("Checkout")]
+      [_vm._v("\n    Checkout\n  ")]
     ),
   ])
 }
@@ -29192,11 +29202,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Quantity")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jumlah")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }),
       ]),
@@ -29277,30 +29287,37 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "main" },
-    [
-      _c(
-        "router-link",
-        {
-          staticClass: "d-flex justify-content-center btn btn-warning",
-          attrs: { to: "/product" },
-        },
-        [_c("strong", [_vm._v("Product List")])]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          staticClass: "d-flex justify-content-center btn btn-secondary",
-          attrs: { to: "/cart" },
-        },
-        [_c("strong", [_vm._v(" Check Out (" + _vm._s(_vm.cartTotal) + ")")])]
-      ),
-    ],
-    1
-  )
+  return _c("div", { staticClass: "main" }, [
+    _c(
+      "div",
+      [
+        _c(
+          "router-link",
+          {
+            staticClass: "d-flex justify-content-center btn btn-warning",
+            attrs: { to: "/product" },
+          },
+          [_c("strong", [_vm._v("Product List")])]
+        ),
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      [
+        _c(
+          "router-link",
+          {
+            staticClass: "d-flex justify-content-center btn btn-secondary",
+            attrs: { to: "/cart" },
+          },
+          [_c("strong", [_vm._v(" Check Out (" + _vm._s(_vm.cartTotal) + ")")])]
+        ),
+      ],
+      1
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -29381,7 +29398,7 @@ var render = function () {
               },
               [
                 _vm._v(
-                  "\n            >" +
+                  "\n            " +
                     _vm._s(_vm.productItem.title) +
                     "\n          "
                 ),
