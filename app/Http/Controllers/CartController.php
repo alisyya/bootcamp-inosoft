@@ -18,21 +18,5 @@ class CartController extends Controller
         array_push($json, $request->post());
         return response()->json($json);
     }
-    // public function addDataCart(Request $request){
-    //     $bool = true;
-    //     $path = base_path()."/mocking/cart.json";
-    //     $json = json_decode(file_get_contents($path),true);
-    //     foreach ($json as $data){
-    //         if($data->id == $request->id){
-    //             $data->quantity += $request->quantity;
-    //             $bool = false;
-    //         }
-    //     }
-    //     if($bool){
-    //         array_push($json, $request->post());
-    //     }
-            
-    //     return response()->json($json);
-    // }
 }
 
