@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Services\ItemService;
+use Exception;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
+
+
+    protected $itemService;
+
+    public function __construct(ItemService $itemService)
+    {
+        $this->itemService = $itemService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +45,26 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only([
+            'nama_item',
+            'desc',
+            'harga',
+            'stock',
+
+        ]);
+
+        $result = ['status' => 200];
+
+        try {
+            $result['data'] = $this->itemService->saveTambahItem($data);
+        } catch (Exception $e) {
+            $result = [
+                'status' => 500,
+                'error' => $e->getMessage()
+            ];
+        }
+
+        return response()->json($result, $result['status']);
     }
 
     /**

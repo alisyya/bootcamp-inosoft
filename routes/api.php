@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('get_data_product','App\Http\Controllers\ProductController@getDataProduct');
 Route::get('get_data_cart','App\Http\Controllers\CartController@getDataCart');
+
+Route::post('/item', [
+    ItemController::class, 'store'
+]);

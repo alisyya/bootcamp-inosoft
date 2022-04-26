@@ -7,20 +7,20 @@ use InvalidArgumentException;
 
 class ItemService
 {
-    protected ItemRepository $itemRepository;
+    protected  $itemRepository;
 
     public function __construct(ItemRepository $itemRepository)
     {
         $this->itemRepository = $itemRepository;
     }
 
-    public function tambahItem($data)
+    public function saveTambahItem($data)
     {
         $validator = Validator::make($data,[
             'nama_item' => 'required',
             'desc' => 'required',
             'harga' => 'required',
-            'stok' => 'required'
+            'stock' => 'required'
 
         ]);
 
@@ -28,7 +28,7 @@ class ItemService
             throw new InvalidArgumentException($validator->errors()->first());
         }
 
-        $result = $this->itemRepository->$data->save();
+        $result = $this->itemRepository->save($data);
 
         return $result;
     }
