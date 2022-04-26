@@ -22,5 +22,5 @@ Route::get('get_data_product','App\Http\Controllers\ProductController@getDataPro
 Route::get('get_data_cart','App\Http\Controllers\CartController@getDataCart');
 
 Route::post('/item', [
-    ItemController::class, 'store'
+    ItemController::class, 'tambahItem'
 ]);

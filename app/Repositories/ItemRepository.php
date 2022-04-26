@@ -20,29 +20,7 @@ class ItemRepository
         return $item;
     }
 
-    public function store(Array $data) 
-    {
-        try {
-            $item = new $this->item;
-            
-            $item->title = $data['nama_item'];
-            $item->title = $data['desc'];
-            $item->title = $data['harga'];
-            $item->title = $data['stock'];
-
-            
-            $item->save();
-
-            $result['message'] = "Item berhasil dibuat !";
-            $result['status'] = 200;
-            
-        } catch (\Exception $exception) {
-            $result['message'] = $exception->getMessage();
-            $result['status'] = 500;
-        }
-
-    }
-
+    
     public function save ($data)
     {
         $item = new $this->item;

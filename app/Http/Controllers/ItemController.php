@@ -43,7 +43,7 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function tambahItem(Request $request)
     {
         $data = $request->only([
             'nama_item',
