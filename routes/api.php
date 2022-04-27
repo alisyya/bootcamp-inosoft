@@ -25,6 +25,6 @@ Route::post('/item', [
     ItemController::class, 'tambahItem'
 ]);
 
-Route::get('/getItem', [
+Route::get('/item', [
     ItemController::class, 'getAll'
 ]);

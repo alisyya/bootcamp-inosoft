@@ -5334,6 +5334,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5415,8 +5416,8 @@ __webpack_require__.r(__webpack_exports__);
     addToCart: function addToCart() {
       this.$store.dispatch('addProductToCart', {
         id: this.productItem.id,
-        title: this.productItem.title,
-        price: this.productItem.price,
+        nama_item: this.productItem.nama_item,
+        harga: this.productItem.harga,
         quantity: 1
       });
     }
@@ -5438,8 +5439,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _Product_Item_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Product_Item.vue */ "./resources/js/components/Product/Product_Item.vue");
-var _name$components$comp;
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -5456,14 +5455,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_name$components$comp = {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProductList",
   components: {
     ProductListItem: _Product_Item_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
-}, _defineProperty(_name$components$comp, "components", {
-  ProductListItem: _Product_Item_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-}), _defineProperty(_name$components$comp, "computed", _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(['product']))), _name$components$comp);
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(['product']))
+});
 
 /***/ }),
 
@@ -5632,10 +5630,10 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
     },
     ADD_TO_CART: function ADD_TO_CART(state, _ref) {
       var id = _ref.id,
-          title = _ref.title,
-          price = _ref.price,
+          nama_item = _ref.nama_item,
+          harga = _ref.harga,
           quantity = _ref.quantity;
-      state.totalPrice += price;
+      state.totalPrice += harga;
       state.cartTotal += quantity;
       var findProduct = state.productItems.find(function (o) {
         return o.id === id;
@@ -5650,8 +5648,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
       } else {
         state.cartItems.push({
           id: id,
-          title: title,
-          price: price,
+          nama_item: nama_item,
+          harga: harga,
           quantity: quantity
         });
       }
@@ -5684,26 +5682,26 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
     getCartItems: function getCartItems(_ref3) {
       var commit = _ref3.commit;
       axios.get('api/getItem').then(function (response) {
-        commit('UPDATE_CART_ITEMS', response.data);
+        commit('UPDATE_CART_ITEMS', response.data.data);
       });
     },
     addProductToCart: function addProductToCart(_ref4, _ref5) {
       var commit = _ref4.commit;
       var id = _ref5.id,
-          title = _ref5.title,
-          price = _ref5.price,
+          nama_item = _ref5.nama_item,
+          harga = _ref5.harga,
           quantity = _ref5.quantity;
       commit('ADD_TO_CART', {
         id: id,
-        title: title,
-        price: price,
+        nama_item: nama_item,
+        harga: harga,
         quantity: quantity
       });
     },
     getProductItems: function getProductItems(_ref6) {
       var commit = _ref6.commit;
-      axios.get("api/getItem").then(function (response) {
-        commit('UPDATE_PRODUCT_ITEMS', response.data);
+      axios.get("api/item").then(function (response) {
+        commit('UPDATE_PRODUCT_ITEMS', response.data.data);
       });
     },
     deleteItemFromCart: function deleteItemFromCart(_ref7, _ref8) {
@@ -29036,9 +29034,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("tr", [
-    _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(_vm.cartItem.title))]),
+    _c("th", { attrs: { scope: "row" } }, [
+      _vm._v(_vm._s(_vm.cartItem.nama_item)),
+    ]),
     _vm._v(" "),
-    _c("td", [_vm._v("Rp. " + _vm._s(_vm.cartItem.price))]),
+    _c("td", [_vm._v("Rp. " + _vm._s(_vm.cartItem.harga))]),
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.cartItem.quantity))]),
     _vm._v(" "),

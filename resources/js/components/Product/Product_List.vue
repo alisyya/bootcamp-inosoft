@@ -12,9 +12,7 @@ import ProductListItem from './Product_Item.vue'
 
 export default {
   name: "ProductList",
-  components:{
-      ProductListItem
-  },
+  
   components: {
     ProductListItem
   },
@@ -23,6 +21,8 @@ export default {
       'product'
     ])
   },
+
+  
   
  
 };

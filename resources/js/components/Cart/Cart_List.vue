@@ -15,6 +15,7 @@
                        <td> <p>Total :</p></td>
                        <td></td>
                        <td><p>Rp. {{price}}</p></td> 
+        
                        <td></td>
                     </tr>
                 </tbody>
