@@ -24,3 +24,7 @@ Route::get('get_data_cart','App\Http\Controllers\CartController@getDataCart');
 Route::post('/item', [
     ItemController::class, 'tambahItem'
 ]);
+
+Route::get('/getItem', [
+    ItemController::class, 'getAll'
+]);

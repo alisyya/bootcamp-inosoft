@@ -62,7 +62,7 @@ export default new Vuex.Store({
   },
   actions: {
     getCartItems ({ commit }) {
-        axios.get('api/get_data_cart').then((response) => {
+        axios.get('api/getItem').then((response) => {
           commit('UPDATE_CART_ITEMS', response.data)
         });
     },
@@ -71,7 +71,7 @@ export default new Vuex.Store({
     },
 
     getProductItems ({ commit }) {
-        axios.get(`/api/get_data_product`).then((response) => {
+        axios.get(`api/getItem`).then((response) => {
           commit('UPDATE_PRODUCT_ITEMS', response.data)
         });
     },

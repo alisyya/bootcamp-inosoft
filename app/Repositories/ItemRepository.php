@@ -7,7 +7,7 @@ use App\Models\Item;
 
 class ItemRepository
 {
-    protected $Item;
+    protected $item;
 
     public function __construct(Item $item)
     {

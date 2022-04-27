@@ -12,9 +12,9 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getAll()
     {
-        //
+        
     }
 
     /**
@@ -33,9 +33,19 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function addToCart(Request $request,$data)
     {
-        //
+        Cart::add($data,[
+            'nama_barang' => $request->nama_barang,
+            'stock_beli' => $request->stock_beli,
+            'total_harga' => $request->total_harga,
+        ]);
+        $result = [
+            'status' => 200,
+            'message' =>'success'
+        ];
+
+        return response()->json($data,$result);
     }
 
     /**

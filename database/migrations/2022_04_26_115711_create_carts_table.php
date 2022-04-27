@@ -16,6 +16,7 @@ class CreateCartsTable extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->string('nama_item');
             $table->integer('stock_beli');
+            $table->integer('total_harga');
         });
     }
 

@@ -5683,7 +5683,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
   actions: {
     getCartItems: function getCartItems(_ref3) {
       var commit = _ref3.commit;
-      axios.get('api/get_data_cart').then(function (response) {
+      axios.get('api/getItem').then(function (response) {
         commit('UPDATE_CART_ITEMS', response.data);
       });
     },
@@ -5702,7 +5702,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
     },
     getProductItems: function getProductItems(_ref6) {
       var commit = _ref6.commit;
-      axios.get("/api/get_data_product").then(function (response) {
+      axios.get("api/getItem").then(function (response) {
         commit('UPDATE_PRODUCT_ITEMS', response.data);
       });
     },
@@ -29210,11 +29210,11 @@ var render = function () {
   return _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
     _c("div", { staticClass: "card-body" }, [
       _c("h5", { staticClass: "card-title" }, [
-        _vm._v(_vm._s(_vm.productItem.title)),
+        _vm._v(_vm._s(_vm.productItem.nama_item)),
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "card-text" }, [
-        _vm._v(_vm._s(_vm.productItem.description)),
+        _vm._v(_vm._s(_vm.productItem.desc)),
       ]),
       _vm._v(" "),
       _c("a", { staticClass: "btn btn-light" }, [
@@ -29222,7 +29222,7 @@ var render = function () {
       ]),
       _vm._v(" "),
       _c("a", { staticClass: "btn btn-light" }, [
-        _vm._v("Rp. " + _vm._s(_vm.productItem.price)),
+        _vm._v("Rp. " + _vm._s(_vm.productItem.harga)),
       ]),
       _vm._v(" "),
       _c(

@@ -11,6 +11,7 @@ class Cart extends Eloquent
 
     protected $fillable = [
         'nama_item',
-        'stock_beli'
+        'stock_beli',
+        'total_harga'
     ];
 }

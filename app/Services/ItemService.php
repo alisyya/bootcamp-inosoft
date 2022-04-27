@@ -13,6 +13,11 @@ class ItemService
     {
         $this->itemRepository = $itemRepository;
     }
+    
+    public function getAll()
+    {
+        return $this->itemRepository->getAll();
+    }
 
     public function saveTambahItem($data)
     {
