@@ -5636,11 +5636,11 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
       state.totalPrice += harga;
       state.cartTotal += quantity;
       var findProduct = state.productItems.find(function (o) {
-        return o.id === id;
+        return o.nama_item === nama_item;
       });
       findProduct.stock -= quantity;
       var findCart = state.cartItems.find(function (o) {
-        return o.id === id;
+        return o.nama_item === nama_item;
       });
 
       if (findCart) {
@@ -5663,10 +5663,10 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
           harga = _ref2.harga;
       var totalHarga = state.totalPrice += harga;
       var findProduct = state.productItems.find(function (o) {
-        return o.nama_item === nama_item;
+        return o.id === id;
       });
       var findCart = state.cartItems.find(function (o) {
-        return o.nama_item === nama_item;
+        return o.id === id;
       });
 
       if (quantity === 1) {

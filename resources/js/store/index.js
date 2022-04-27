@@ -24,10 +24,10 @@ export default new Vuex.Store({
     ADD_TO_CART(state,{id,nama_item,harga,quantity}){
         state.totalPrice += harga;
         state.cartTotal += quantity;
-        let findProduct = state.productItems.find(o => o.id === id)
+        let findProduct = state.productItems.find(o => o.nama_item === nama_item)
         
         findProduct.stock -= quantity;
-        let findCart = state.cartItems.find(o => o.id === id)
+        let findCart = state.cartItems.find(o => o.nama_item === nama_item)
         if(findCart){
             findCart.quantity +=1;
         }else{
