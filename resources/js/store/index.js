@@ -21,20 +21,20 @@ export default new Vuex.Store({
     UPDATE_CART_ITEMS (state, payload) {
         state.cartItems = payload;
     },
-    ADD_TO_CART(state,{id,nama_item,harga,quantity}){
-        state.totalPrice += harga;
+    ADD_TO_CART(state,{id,name,price,quantity}){
+        state.totalPrice += price;
         state.cartTotal += quantity;
-        let findProduct = state.productItems.find(o => o.nama_item === nama_item)
+        let findProduct = state.productItems.find(o => o.name === name)
         
         findProduct.stock -= quantity;
-        let findCart = state.cartItems.find(o => o.nama_item === nama_item)
+        let findCart = state.cartItems.find(o => o.name === name)
         if(findCart){
             findCart.quantity +=1;
         }else{
             state.cartItems.push({
                 id,
-                nama_item,
-                harga,
+                name,
+                price,
                 quantity
             })
         }
@@ -44,8 +44,8 @@ export default new Vuex.Store({
         state.productItems = payload;
     },
 
-    DELETE_ITEM_CART(state,{id,quantity,harga}){
-        let totalHarga = state.totalPrice += harga;
+    DELETE_ITEM_CART(state,{id,quantity,price}){
+        let totalHarga = state.totalPrice += price;
         let findProduct = state.productItems.find(o => o.id === id)
         let findCart = state.cartItems.find(o => o.id === id)
         if(quantity === 1){
@@ -71,8 +71,8 @@ export default new Vuex.Store({
           commit('UPDATE_CART_ITEMS', response.data.data)
         });
     },
-    addProductToCart({commit},{id,nama_item,harga , quantity}){
-        commit('ADD_TO_CART',{id,nama_item,harga, quantity});
+    addProductToCart({commit},{id,name,price , quantity}){
+        commit('ADD_TO_CART',{id,name,price, quantity});
     },
 
     getProductItems ({ commit }) {
@@ -80,7 +80,7 @@ export default new Vuex.Store({
           commit('UPDATE_PRODUCT_ITEMS', response.data.data)
         });
     },
-    deleteItemFromCart({commit},{id,quantity,harga}){
+    deleteItemFromCart({commit},{id,quantity,price}){
         commit('DELETE_ITEM_CART',{id,quantity});
     }
   }

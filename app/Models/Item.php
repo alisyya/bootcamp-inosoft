@@ -9,11 +9,12 @@ class Item extends Eloquent
 {
     use HasFactory;
     
+    protected $table = 'items';
 
     protected $fillable = [
-        'nama_item',
+        'name',
         'desc',
         'stock',
-        'harga'
+        'price'
     ];
 }

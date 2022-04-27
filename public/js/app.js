@@ -5630,17 +5630,17 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
     },
     ADD_TO_CART: function ADD_TO_CART(state, _ref) {
       var id = _ref.id,
-          nama_item = _ref.nama_item,
-          harga = _ref.harga,
+          name = _ref.name,
+          price = _ref.price,
           quantity = _ref.quantity;
-      state.totalPrice += harga;
+      state.totalPrice += price;
       state.cartTotal += quantity;
       var findProduct = state.productItems.find(function (o) {
-        return o.nama_item === nama_item;
+        return o.name === name;
       });
       findProduct.stock -= quantity;
       var findCart = state.cartItems.find(function (o) {
-        return o.nama_item === nama_item;
+        return o.name === name;
       });
 
       if (findCart) {
@@ -5648,8 +5648,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
       } else {
         state.cartItems.push({
           id: id,
-          nama_item: nama_item,
-          harga: harga,
+          name: name,
+          price: price,
           quantity: quantity
         });
       }
@@ -5660,8 +5660,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
     DELETE_ITEM_CART: function DELETE_ITEM_CART(state, _ref2) {
       var id = _ref2.id,
           quantity = _ref2.quantity,
-          harga = _ref2.harga;
-      var totalHarga = state.totalPrice += harga;
+          price = _ref2.price;
+      var totalHarga = state.totalPrice += price;
       var findProduct = state.productItems.find(function (o) {
         return o.id === id;
       });
@@ -5692,13 +5692,13 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
     addProductToCart: function addProductToCart(_ref4, _ref5) {
       var commit = _ref4.commit;
       var id = _ref5.id,
-          nama_item = _ref5.nama_item,
-          harga = _ref5.harga,
+          name = _ref5.name,
+          price = _ref5.price,
           quantity = _ref5.quantity;
       commit('ADD_TO_CART', {
         id: id,
-        nama_item: nama_item,
-        harga: harga,
+        name: name,
+        price: price,
         quantity: quantity
       });
     },
@@ -5712,7 +5712,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
       var commit = _ref7.commit;
       var id = _ref8.id,
           quantity = _ref8.quantity,
-          harga = _ref8.harga;
+          price = _ref8.price;
       commit('DELETE_ITEM_CART', {
         id: id,
         quantity: quantity
