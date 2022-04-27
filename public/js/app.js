@@ -5659,12 +5659,14 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
     },
     DELETE_ITEM_CART: function DELETE_ITEM_CART(state, _ref2) {
       var id = _ref2.id,
-          quantity = _ref2.quantity;
+          quantity = _ref2.quantity,
+          harga = _ref2.harga;
+      var totalHarga = state.totalPrice += harga;
       var findProduct = state.productItems.find(function (o) {
-        return o.id === id;
+        return o.nama_item === nama_item;
       });
       var findCart = state.cartItems.find(function (o) {
-        return o.id === id;
+        return o.nama_item === nama_item;
       });
 
       if (quantity === 1) {
@@ -5672,9 +5674,11 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
           return i.id === id;
         }), 1);
         findProduct.stock += 1;
+        splice(totalHarga);
       } else {
         findCart.quantity -= 1;
         findProduct.stock += 1;
+        splice(totalHarga);
       }
     }
   },
@@ -5707,7 +5711,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
     deleteItemFromCart: function deleteItemFromCart(_ref7, _ref8) {
       var commit = _ref7.commit;
       var id = _ref8.id,
-          quantity = _ref8.quantity;
+          quantity = _ref8.quantity,
+          harga = _ref8.harga;
       commit('DELETE_ITEM_CART', {
         id: id,
         quantity: quantity

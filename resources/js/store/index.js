@@ -44,7 +44,8 @@ export default new Vuex.Store({
         state.productItems = payload;
     },
 
-    DELETE_ITEM_CART(state,{id,quantity}){
+    DELETE_ITEM_CART(state,{id,quantity,harga}){
+        let totalHarga = state.totalPrice += harga;
         let findProduct = state.productItems.find(o => o.id === id)
         let findCart = state.cartItems.find(o => o.id === id)
         if(quantity === 1){
@@ -52,10 +53,14 @@ export default new Vuex.Store({
                 return i.id === id;
             }), 1);
             findProduct.stock += 1;
+            splice(totalHarga);
         }else{
             findCart.quantity -= 1;
             findProduct.stock += 1;
+            splice(totalHarga);
         }
+
+        
     }
 
 
@@ -75,7 +80,7 @@ export default new Vuex.Store({
           commit('UPDATE_PRODUCT_ITEMS', response.data.data)
         });
     },
-    deleteItemFromCart({commit},{id,quantity}){
+    deleteItemFromCart({commit},{id,quantity,harga}){
         commit('DELETE_ITEM_CART',{id,quantity});
     }
   }
