@@ -25,7 +25,7 @@ export default new Vuex.Store({
         state.totalPrice += price;
         state.cartTotal += quantity;
         let findProduct = state.productItems.find(o => o.name === name)
-        
+
         findProduct.stock -= quantity;
         let findCart = state.cartItems.find(o => o.name === name)
         if(findCart){
@@ -60,29 +60,29 @@ export default new Vuex.Store({
             splice(totalHarga);
         }
 
-        
+
     }
 
 
   },
   actions: {
     getCartItems ({ commit }) {
-        axios.get('api/getItem').then((response) => {
-          commit('UPDATE_CART_ITEMS', response.data.data)
-        });
+        // axios.get('api/getItem').then((response) => {
+        //   commit('UPDATE_CART_ITEMS', response.data.data)
+        // });
     },
     addProductToCart({commit},{id,name,price , quantity}){
         commit('ADD_TO_CART',{id,name,price, quantity});
     },
 
     getProductItems ({ commit }) {
-        axios.get(`api/item`).then((response) => {
-          commit('UPDATE_PRODUCT_ITEMS', response.data.data)
-        });
+        // axios.get(`api/item`).then((response) => {
+        //   commit('UPDATE_PRODUCT_ITEMS', response.data.data)
+        // });
     },
     deleteItemFromCart({commit},{id,quantity,price}){
         commit('DELETE_ITEM_CART',{id,quantity});
     }
   }
-  
+
 })

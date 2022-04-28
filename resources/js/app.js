@@ -1,16 +1,19 @@
+// import index from "./Index";
+
+// import Index from "./Index";
+
 require('./bootstrap');
 
-import * as Vue from 'vue'
+import Vue from "vue";
 import axios from "axios";
 import 'es6-promise'
 import VueRouter from "vue-router";
 import VueAuth from '@websanova/vue-auth';
-import {routes} from './routes';
+import router from "./router";
 import store from './store';
 import VueAxios from 'vue-axios';
 import Index from './Index';
-import auth from './auth'
-
+import auth from "./auth";
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -30,13 +33,12 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('navbar', require('./components/Nav/Navbar.vue').default);
-
-Vue.component('index', Index);
-
+// Vue.component('navbar', require('./components/Nav/Navbar.vue').default);
+Vue.router = router;
+Vue.use(VueRouter);
 // vue authentication
 Vue.use(VueAxios, axios)
-axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api/v1`
+axios.defaults.baseURL = `${window.location.origin}/api/v1`
 Vue.use(VueAuth, auth)
 
 /**
@@ -44,16 +46,25 @@ Vue.use(VueAuth, auth)
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
- Vue.use(VueRouter);
- const router = new VueRouter({
-    mode: 'history',
-    routes
-});
+
 const app = new Vue({
     el: '#app',
     store,
     router,
-    created() {
-        this.$store.dispatch('getProductItems');
-      }
-});
+    render(h) {
+        return h(Index)
+    }
+})
+
+//  const router = new VueRouter({
+//     mode: 'history',
+//     routes
+// });
+// const app = new Vue({
+//     el: '#app',
+//     store,
+//     router,
+//     created() {
+//         this.$store.dispatch('getProductItems');
+//       }
+// });

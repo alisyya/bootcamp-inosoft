@@ -1,11 +1,10 @@
 import VueRouter from 'vue-router'
 // Pages
 import Home from './pages/Home'
-import About from './pages/About'
+import About from './pages/about'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/user/Dashboard'
-import AdminDashboard from './pages/admin/Dashboard'
 // Routes
 const routes = [
     {
@@ -50,8 +49,8 @@ const routes = [
         }
     },
 ]
+
 const router = new VueRouter({
-    history: true,
     mode: 'history',
     routes,
 })
