@@ -19,16 +19,16 @@ use App\Http\Controllers\Api\AuthController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-//Route::get('get_data_product','App\Http\Controllers\ProductController@getDataProduct');
-//Route::get('get_data_cart','App\Http\Controllers\CartController@getDataCart');
-//
-//Route::post('/item', [
-//    ItemController::class, 'tambahItem'
-//]);
-//
-//Route::get('/item', [
-//    ItemController::class, 'getAll'
-//]);
+Route::get('get_data_product','App\Http\Controllers\ProductController@getDataProduct');
+Route::get('get_data_cart','App\Http\Controllers\CartController@getDataCart');
+
+Route::post('/item', [
+    ItemController::class, 'tambahItem'
+]);
+
+Route::get('/item', [
+    ItemController::class, 'getAll'
+]);
 
 Route::namespace('App\Http\Controllers\Api')->middleware(['api'])->group(function ($router) {
         Route::post('login', 'AuthController@login');
